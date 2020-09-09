@@ -1,0 +1,84 @@
+---
+title: "Build Advanced R"
+author: "Ian Weykamp"
+date: "9/9/2020"
+output: html_document
+---
+##
+##HW 2
+##
+
+```{r,eval=FALSE}
+devtools::install_github("hadley/sloop")
+devtools::install_github("hadley/emo")
+
+```
+
+install.packages("bookdown")
+
+```{r render, eval = FALSE}
+bookdown::render_book("index.Rmd", output_format = "bookdown::pdf_book")
+````
+
+The first error encountered: 
+##Quitting from lines 4-5 (Introduction.Rmd) 
+##Error in dev.control(displaylist = if (record) "enable" else "inhibit") : ##dev.control() called without an open graphics device
+
+Resolved by installing XQuartz and restarting Mac
+
+Second error
+##Quitting from lines 80-81 (Names-values.Rmd) 
+##Error in library(lobstr) : there is no package called 'lobstr'
+##Calls: local ... withCallingHandlers -> withVisible -> eval -> eval -> ##library
+
+install.packages("lobstr")
+
+Third error
+##Quitting from lines 535-550 (R6.Rmd) 
+##Error in loadNamespace(name) : there is no package called 'RSQLite'
+##Calls: local ... loadNamespace -> withRestarts -> withOneRestart -> ##doWithOneRestart
+
+install.packages("RSQLite")
+
+Fourth error
+##Quitting from lines 38-40 (Perf-measure.Rmd) 
+##Error in library(profvis) : there is no package called 'profvis'
+##Calls: local ... withCallingHandlers -> withVisible -> eval -> eval -> ##library
+
+install.packages("profvis")
+
+Fifth error
+##uitting from lines 38-40 (Perf-measure.Rmd) 
+##Error in library(bench) : there is no package called 'bench'
+##Calls: local ... withCallingHandlers -> withVisible -> eval -> eval -> ##library
+
+install.packages("bench")
+
+Sixth error
+##Quitting from lines 233-234 (Perf-measure.Rmd) 
+##Error: `ggbeeswarm` must be installed to use `type = "beeswarm"` option.
+
+install.packages("ggbeeswarm")
+
+Seventh error
+##xcrun: error: invalid active developer path ##(/Library/Developer/CommandLineTools), missing xcrun at: ##/Library/Developer/CommandLineTools/usr/bin/xcrun
+##Error in sourceCpp(code = code, env = env, rebuild = rebuild, cacheDir = ##cacheDir,  : 
+##  Error 1 occurred building shared library.
+##Calls: local ... withVisible -> eval -> eval -> cppFunction -> sourceCpp
+
+Installed xcode for Mac to resolve
+
+Eigth error
+##Package fontspec Error: The font "Inconsolata" cannot be found.
+
+Downloaded font Inconsolta from the web and restarted RStudio to resolve
+Took two tries because I forgot to install the font.
+
+Nineth Error
+##! LaTeX Error: Environment sidebar undefined.
+##
+##Error: LaTeX failed to compile _main.tex. See ##https://yihui.org/tinytex/r/#debugging for debugging tips. See _main.log ##for more info.
+
+reinstall.packages("tinytex")
+remotes::install_github('rstudio/rmarkdown')
+
